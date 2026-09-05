@@ -23,9 +23,42 @@ Aplicação web responsiva da Associação Sol Nascente para solicitação, aná
 - Estimativa de distância e combustível por veículo.
 - Interface móvel do motorista, navegação e registro de coleta/não coleta.
 
-## Configuração
+## 1. Supabase
 
-Execute `supabase/migrations/001_initial_schema.sql` no Supabase. No Netlify, configure `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY` e `SITE_URL`.
+1. Crie um projeto no Supabase.
+2. Abra **SQL Editor → New query**.
+3. Cole e execute `supabase/migrations/001_initial_schema.sql`.
+4. Em **Authentication**, crie os usuários da equipe.
+5. Para cada usuário, insira o perfil em `profiles` com um dos papéis: `manager`, `driver_truck` ou `driver_tricycle`.
+
+Exemplo:
+
+```sql
+insert into public.profiles (id, full_name, role)
+values ('UUID_DO_USUARIO', 'Nome do gestor', 'manager');
+```
+
+## 2. Netlify
+
+Conecte este repositório ao Netlify. A configuração de build já está em `netlify.toml`.
+
+Cadastre em **Site configuration → Environment variables**:
+
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY` (somente nas funções; nunca use no front-end)
+- `RESEND_API_KEY`
+- `SITE_URL`
+
+No serviço de e-mail, valide o domínio remetente usado em `netlify/functions/notify-request.ts`.
+
+## Desenvolvimento local
+
+```bash
+cp .env.example .env
+npm install
+npm run dev
+```
 
 ## Identidade visual
 

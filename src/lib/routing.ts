@@ -1,0 +1,5 @@
+const BASE={latitude:-3.304994801080341,longitude:-39.2765194153434};
+type Point={latitude:number;longitude:number};
+const distance=(a:Point,b:Point)=>{const R=6371,dLat=(b.latitude-a.latitude)*Math.PI/180,dLon=(b.longitude-a.longitude)*Math.PI/180;const v=Math.sin(dLat/2)**2+Math.cos(a.latitude*Math.PI/180)*Math.cos(b.latitude*Math.PI/180)*Math.sin(dLon/2)**2;return 2*R*Math.atan2(Math.sqrt(v),Math.sqrt(1-v))};
+const total=(items:Point[])=>{let d=0,p=BASE;for(const x of items){d+=distance(p,x);p=x}return d+distance(p,BASE)};
+export function optimizeRoute<T extends Point>(input:T[]){let pending=[...input].slice(0,10),current:Point=BASE,route:T[]=[];while(pending.length){pending.sort((a,b)=>distance(current,a)-distance(current,b));const next=pending.shift()!;route.push(next);current=next}let improved=true;while(improved){improved=false;for(let i=0;i<route.length-1;i++)for(let j=i+1;j<route.length;j++){const candidate=[...route.slice(0,i),...route.slice(i,j+1).reverse(),...route.slice(j+1)];if(total(candidate)+.01<total(route)){route=candidate;improved=true}}}return{stops:route,distanceKm:Number(total(route).toFixed(1))}}
