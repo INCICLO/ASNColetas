@@ -1,2 +1,3 @@
 import React from 'react';import ReactDOM from 'react-dom/client';import 'leaflet/dist/leaflet.css';import './styles.css';import App from './App';
-ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></React.StrictMode>);
+class ErrorBoundary extends React.Component<{children:React.ReactNode},{failed:boolean}>{state={failed:false};static getDerivedStateFromError(){return{failed:true}}componentDidCatch(error:unknown){console.error('Falha na aplicação',error)}render(){return this.state.failed?<main style={{padding:32,textAlign:'center'}}><h1>Não foi possível carregar esta etapa.</h1><p>Atualize a página e tente novamente.</p><button onClick={()=>location.reload()}>Atualizar página</button></main>:this.props.children}}
+ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><ErrorBoundary><App/></ErrorBoundary></React.StrictMode>);
