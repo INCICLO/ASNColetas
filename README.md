@@ -45,7 +45,7 @@ Conecte este repositório ao Netlify. A configuração de build já está em `ne
 Cadastre em **Site configuration → Environment variables**:
 
 - `VITE_SUPABASE_URL`
-- `VITE_SUPABASE_ANON_KEY`
+- `VITE_SUPABASE_PUBLISHABLE_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY` (somente nas funções; nunca use no front-end)
 - `RESEND_API_KEY`
 - `SITE_URL`
