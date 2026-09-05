@@ -78,7 +78,7 @@ create index idx_events_request_created on public.request_events(request_id,crea
 create index idx_routes_date_vehicle on public.routes(collection_date,vehicle_id);
 
 create or replace function public.make_protocol() returns text language sql as $$
-  select 'SOL-'||extract(year from now())::int||'-'||upper(substr(encode(gen_random_bytes(5),'hex'),1,6));
+  select 'SOL-'||extract(year from now())::int||'-'||upper(substr(replace(gen_random_uuid()::text,'-',''),1,6));
 $$;
 
 create or replace function public.submit_collection_request(payload jsonb) returns text
