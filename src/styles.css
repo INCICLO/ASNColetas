@@ -11,6 +11,12 @@
 
 /* A marca ASN é vertical e precisa de uma área própria para não ser recortada. */
 .brand-strip img.asn-logo{width:180px;height:128px;object-fit:contain;object-position:center;flex:0 0 180px}
+
+.location-options button:disabled{cursor:wait;opacity:.78}
+.address-lookup-status{display:none;margin-top:10px;border-radius:11px;padding:10px 13px;font-size:12px;line-height:1.45}
+.address-lookup-status.loading,.address-lookup-status.partial{display:block;background:#fff6e8;color:#805713}
+.address-lookup-status.found{display:block;background:#e9f6ef;color:#176c4c}
+.address-lookup-status.error{display:block;background:#fff0f0;color:#a23434}
 @media(max-width:760px){.brand-strip img.asn-logo{width:126px;height:92px;flex-basis:126px}}
 
 /* Identidade visual organizada da área da equipe */
