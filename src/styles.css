@@ -12,3 +12,21 @@
 /* A marca ASN é vertical e precisa de uma área própria para não ser recortada. */
 .brand-strip img.asn-logo{width:180px;height:128px;object-fit:contain;object-position:center;flex:0 0 180px}
 @media(max-width:760px){.brand-strip img.asn-logo{width:126px;height:92px;flex-basis:126px}}
+
+/* Identidade visual organizada da área da equipe */
+.dashboard>aside{padding:22px 16px 18px}
+.dash-brand{min-height:72px;padding:0 12px 18px;justify-content:center;border-bottom:1px solid #ffffff14}
+.dash-brand img{width:132px;height:62px;display:block}
+.dash-brand button{position:absolute;right:17px;top:28px}
+.workspace{margin-top:18px;padding:13px;display:flex;flex-direction:column;align-items:stretch;gap:10px;background:#fff;border:0;box-shadow:0 10px 28px #11152f2b}
+.workspace-logo{height:86px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:10px;background:#fff}
+.workspace .workspace-logo img{width:100%;height:100%;object-fit:contain;background:transparent;border-radius:0}
+.workspace span{text-align:center;align-items:center;color:var(--navy)}
+.workspace b{font-size:12px}
+.workspace small{font-size:9px;color:#777d93;opacity:1}
+.dashboard aside nav{margin-top:20px}
+.sidebar-credit{margin-top:auto;padding:18px 10px 14px;border-top:1px solid #ffffff17;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.sidebar-credit small{font-size:7px;line-height:1.4;letter-spacing:.12em;color:#ffffff72}
+.sidebar-credit img{width:72px;height:34px;object-fit:contain;filter:brightness(0) invert(1);opacity:.82}
+.user-mini{margin-top:0}
+.system-alert{margin:0 0 18px;padding:14px 17px;border:1px solid #f1b4a0;border-radius:14px;background:#fff3ed;color:#9d3e1e;font-size:13px}
