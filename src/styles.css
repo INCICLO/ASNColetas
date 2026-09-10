@@ -21,6 +21,18 @@
 .route-controls .route-weekday{display:flex;align-items:center;min-height:44px;padding:0 13px;border:1px solid #dce1ec;border-radius:12px;background:#fbfcfe;color:var(--navy);font-size:12px;font-weight:700;text-transform:capitalize;white-space:nowrap}
 .route-controls .route-success{margin-top:12px;padding:10px 12px;border-radius:10px;background:#e9f6ef;color:#176c4c;font-weight:700}
 .route-card>button:disabled{cursor:not-allowed;color:#8d92a4;background:#f7f8fb}
+
+.driver-logout{border:1px solid #dfe3ea;background:#fff;color:var(--navy);padding:10px 16px;border-radius:11px;font-weight:800}
+.driver-route-tabs{max-width:780px;margin:18px auto 0;display:flex;gap:9px;overflow:auto;padding-bottom:3px}
+.driver-route-tabs button{min-width:145px;border:1px solid #dfe3eb;background:#fff;color:var(--navy);border-radius:13px;padding:11px;text-align:left;font-weight:800}
+.driver-route-tabs button.active{background:var(--orange);border-color:var(--orange);color:#fff}
+.driver-route-tabs small{display:block;margin-top:4px;opacity:.7;font-weight:500}
+.failure-box{grid-column:1/-1;background:#fff4ef;border:1px solid #ffd4c2;border-radius:13px;padding:15px;margin-top:4px}
+.failure-box label{display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:800}
+.failure-box textarea{width:100%;resize:vertical;border:1px solid #e3c3b5;border-radius:10px;padding:11px;color:var(--navy);background:#fff}
+.failure-box>div{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}
+.failure-box button{border:1px solid #dec4b9;background:#fff;color:var(--navy);border-radius:9px;padding:9px 12px;font-weight:800}
+.failure-box .confirm-failure{border:0;background:#b83c32;color:#fff}
 @media(max-width:760px){.brand-strip img.asn-logo{width:126px;height:92px;flex-basis:126px}}
 
 /* Identidade visual organizada da área da equipe */
