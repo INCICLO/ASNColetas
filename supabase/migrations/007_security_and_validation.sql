@@ -25,7 +25,7 @@ volatile
 set search_path = public
 as $$
   select 'SOL-' || extract(year from now())::int || '-'
-    || upper(substr(encode(gen_random_bytes(8), 'hex'), 1, 12));
+    || upper(substr(replace(gen_random_uuid()::text, '-', ''), 1, 12));
 $$;
 
 create or replace function public.submit_collection_request(payload jsonb)
