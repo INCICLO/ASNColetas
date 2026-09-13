@@ -47,9 +47,9 @@ declare
 begin
   clean_materials := array(select trim(value) from jsonb_array_elements_text(coalesce(payload->'materials','[]'::jsonb)) value where trim(value) <> '');
 
-  if clean_name !~ '^\\S+\\s+\\S+' then raise exception 'Informe o nome completo.'; end if;
-  if clean_phone !~ '^\\+55 [0-9]{2} [0-9]{5}-[0-9]{4}$' then raise exception 'Telefone inválido.'; end if;
-  if clean_email !~ '^[^[:space:]@]+@[^[:space:]@]+\\.[^[:space:]@]+$' then raise exception 'E-mail inválido.'; end if;
+  if clean_name !~ '^\S+\s+\S+' then raise exception 'Informe o nome completo.'; end if;
+  if clean_phone !~ '^\+55 [0-9]{2} [0-9]{5}-[0-9]{4}$' then raise exception 'Telefone inválido.'; end if;
+  if clean_email !~ '^[^[:space:]@]+@[^[:space:]@]+\.[^[:space:]@]+$' then raise exception 'E-mail inválido.'; end if;
   if clean_place_type = '' then raise exception 'Informe o tipo do local.'; end if;
   if clean_place_type <> 'Residência' and clean_place_name is null then raise exception 'Informe o nome do local.'; end if;
   if trim(coalesce(payload->>'address','')) = '' or trim(coalesce(payload->>'number','')) = ''
