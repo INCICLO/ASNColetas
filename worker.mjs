@@ -20,7 +20,7 @@ async function sendEmail(env, {to, subject, html}) {
   const response = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {authorization: `Bearer ${env.RESEND_API_KEY}`, 'content-type': 'application/json'},
-    body: JSON.stringify({from: env.EMAIL_FROM || 'Recicle+ Trairi <solicitacoes@inciclo.com.br>', to: [to], subject, html}),
+    body: JSON.stringify({from: env.EMAIL_FROM || 'Recicle+ Trairi <solicitacoes@inciclo.com.br>', reply_to: env.REPLY_TO || 'recicle.trairi@gmail.com', to: [to], subject, html}),
   });
   if (!response.ok) throw new Error(`Resend respondeu ${response.status}`);
 }
