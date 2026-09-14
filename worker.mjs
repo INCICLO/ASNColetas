@@ -9,11 +9,17 @@ const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, char => ({
 const validEmail = value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value ?? '').trim());
 
 async function supabaseRequest(env, path) {
-  return fetch(`${env.SUPABASE_URL}/rest/v1/${path}`, {headers: {
-    apikey: env.SUPABASE_SERVICE_ROLE_KEY,
-    authorization: `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`,
+  const key = env.SUPABASE_SERVICE_ROLE_KEY;
+  const headers = {
+    apikey: key,
     accept: 'application/json',
-  }});
+  };
+  // Legacy service_role keys are JWTs and may be sent as Bearer tokens.
+  // Current sb_secret_* keys are opaque API keys and belong only in apikey.
+  if (!String(key).startsWith('sb_secret_')) {
+    headers.authorization = `Bearer ${key}`;
+  }
+  return fetch(`${env.SUPABASE_URL}/rest/v1/${path}`, {headers});
 }
 
 async function sendEmail(env, {to, subject, html}) {
